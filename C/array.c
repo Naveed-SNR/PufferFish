@@ -1,41 +1,99 @@
 #include <stdio.h>
 #include <conio.h>
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-int main(void)
+void getMatrixElements(int matrix[][10], int row, int column) 
 {
-    int arr1[100], arr2[100];
-    int i, n;
+   printf("\nEnter elements: \n");
+
+   for (int i = 0; i < row; ++i) 
+   {
+    	for (int j = 0; j < column; ++j) 
+		{
+        	 printf("Enter a%d%d: ", i + 1, j + 1);
+         	scanf("%d", &matrix[i][j]);
+      	}
+   }
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+void multiplyMatrices(int first[][10], int second[][10], int result[][10], int r1, int c1, int r2, int c2) 
+{
+	for (int i = 0; i < r1; ++i) 
+	{
+    	for (int j = 0; j < c2; ++j) 
+		{
+    		result[i][j] = 0;
+		}
+	}
+
+	for (int i = 0; i < r1; ++i) 
+	{
+		for (int j = 0; j < c2; ++j) 
+		{
+        	for (int k = 0; k < c1; ++k) 
+			{	
+        		result[i][j] += first[i][k] * second[k][j];
+    		}
+    	}
+	}
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+void display(int result[][10], int row, int column) 
+{ 
+   printf("\nOutput Matrix:\n");
+  
+   for (int i = 0; i < row; ++i) 
+   {
+		for (int j = 0; j < column; ++j) 
+		{
+    		printf("%d  ", result[i][j]);
+
+         	if (j == column - 1)
+            	printf("\n");
+    	}
+   }
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+int main(void) 
+{
+	int first[10][10], second[10][10], result[10][10], r1, c1, r2, c2;
+
+	printf("Enter rows and column for the first matrix: ");
+	scanf("%d %d", &r1, &c1);
 	
-       printf ("Input the number of elements to be stored in the array : ");
-       scanf ("%d", &n);
+	printf("Enter rows and column for the second matrix: ");
+	scanf("%d %d", &r2, &c2);
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/  
    
-       printf ("%d elements in the array :\n", n);
-       for (i = 0; i < n; i++)
-        {
-	      printf ("element - %d : ", i);
-	      scanf ("%d", &arr1[i]);
-	    }
-    // Copy elements of first array into second array.// 
-    for (i = 0; i < n; i++)
-    {
-        arr2[i] = arr1[i];
-    }
+   while (c1 != r2) 
+   {
+    	printf("Error! Enter rows and columns again.\n");
+    	
+		printf("Enter rows and columns for the first matrix: ");
+    	scanf("%d%d", &r1, &c1);
+    	
+		printf("Enter rows and columns for the second matrix: ");
+    	scanf("%d%d", &r2, &c2);
+   }
 
-    /* Prints the elements of first array   */
-    printf ("\nThe elements stored in the first array are :\n");
-    for (i = 0; i < n; i++)
-    {
-        printf("%d, ", arr1[i]);
-    }
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+  
+	getMatrixElements(first, r1, c1);
 
-    /* Prints the elements copied into the second array. */
-    printf ("\n\nThe elements copied into the second array are :\n");
-    for (i = 0; i < n; i++)
-    {
-        printf ("%d, ", arr2[i]);
-    }
-	
-    printf ("\n\n");
-    _getch();
-    return 0;
+	getMatrixElements(second, r2, c2);
+
+	multiplyMatrices(first, second, result, r1, c1, r2, c2);
+   
+	display(result, r1, c2);
+   
+	_getch();
+	return 0;
+
 }

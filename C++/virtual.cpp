@@ -28,7 +28,7 @@ public:
 	}
 };
 
-int main()
+int main(void)
 {
     int a;
     int *r = &a;

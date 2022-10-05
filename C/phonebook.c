@@ -11,8 +11,14 @@ person;
 
 int main (void)
 {
+    int a[2];
+    a[0] = 1;
+    a[1] = 2;
     person people[2];
 
+    //banav data type
+    //datatype varaible name
+    //variable name.property name = "value"
     people[0].name = "Naveed";
     people[0].number = "7051966050";
 

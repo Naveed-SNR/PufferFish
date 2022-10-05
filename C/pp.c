@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <conio.h>
 
 int main(void)
 {
@@ -8,19 +7,20 @@ int main(void)
     printf ("No. of prime numbers to be printed: ");
     scanf ("%d ", &num);
 
-    for (n = 0, n < num; n++)
+    for (n = 2; n < num; n++)
     {
-        for (i = 2; i < num / 2; i++)
+        for (i = 2; i < n / 2; i++)
         {
-            if (num % i == 0)
+            if (n % i == 0)
             {
-                if (c == 0)
-                {
-                    printf("%d", num);
-                    c = 0;
-                }
-                c++; 
+                c++;
             }
+            if(c == 0)
+            {  
+                    printf("%d", n);
+                    n++;
+            }
+            c = 0;
         }
     }
 }
