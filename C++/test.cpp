@@ -1,28 +1,13 @@
-// A program with virtual destructor
-#include <iostream>
-
+#include <stdio.h>
+#include<iostream>
 using namespace std;
-
-class base {
-public:
-	base()	
-	{ cout << "Constructing base\n"; }
-	virtual ~base()
-	{ cout << "Destructing base\n"; }	
-};
-
-class derived : public base {
-public:
-	derived()	
-	{ cout << "Constructing derived\n"; }
-	  ~derived()
-	{ cout << "Destructing derived\n"; }
-};
-
 int main()
 {
-derived *d = new derived();
-base *b = d;
-delete b;
+int num1 = 5;
+int num2 = 3;
+int num3 = 2;
+num1 = num2++;
+num2 = --num3;
+cout << num1 << num2<<num3;
 return 0;
 }

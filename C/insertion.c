@@ -1,43 +1,109 @@
-// C Program to Insert an element
-// at a specific position in an Array
+#include<stdio.h>
+#include<stdlib.h>
 
-#include <stdio.h>
+struct Node{
+    int data;
+    struct Node * next;
+};
 
-int main()
+void linkedListTraversal(struct Node *ptr)
 {
-	int arr[100] = { 0 };
-	int i, x, pos, n = 10;
+    while (ptr != NULL)
+    {
+        printf("Element: %d\n", ptr->data);
+        ptr = ptr->next;
+    }
+}
 
-	// initial array of size 10
-	for (i = 0; i < 10; i++)
-		arr[i] = i + 1;
+struct Node * insertAtFirst(struct Node *head, int data)
+{
+    struct Node * ptr = (struct Node *) malloc(sizeof(struct Node));
+    
+	ptr->data = data;
+    ptr->next = head;
+    
+	return ptr; 
+}
 
-	// print the original array
-	for (i = 0; i < n; i++)
-		printf("%d ", arr[i]);
-	printf("\n");
+struct Node * insertAtIndex(struct Node *head, int data, int index)
+{
+    struct Node * ptr = (struct Node *) malloc(sizeof(struct Node));
+    struct Node * p = head;
+    int i = 0;
 
-	// element to be inserted
-	x = 50;
+    while (i != index-1)
+    {
+        p = p->next;
+        i++;
+    }
+    ptr->data = data;
+    ptr->next = p->next;
+    p->next = ptr;
+    return head;
+}
 
-	// position at which element
-	// is to be inserted
-	pos = 5;
+struct Node * insertAtEnd(struct Node *head, int data)
+{
+    struct Node * ptr = (struct Node *) malloc(sizeof(struct Node));
+    ptr->data = data;
+    struct Node * p = head;
 
-	// increase the size by 1
-	n++;
+    while(p->next!=NULL)
+	{
+        p = p->next;
+    }
+    p->next = ptr;
+    ptr->next = NULL;
+    return head;
+}
 
-	// shift elements forward
-	for (i = n - 1; i >= pos; i--)
-		arr[i] = arr[i - 1];
+struct Node * insertAfterNode(struct Node *head, struct Node *prevNode, int data){
+    struct Node * ptr = (struct Node *) malloc(sizeof(struct Node));
+    ptr->data = data;
 
-	// insert x at pos
-	arr[pos - 1] = x;
+    ptr->next = prevNode->next;
+    prevNode->next = ptr;
 
-	// print the updated array
-	for (i = 0; i < n; i++)
-		printf("%d ", arr[i]);
-	printf("\n");
+    return head;
+}
 
-	return 0;
+int main(void)
+{
+	struct Node * temp;
+    struct Node *head;
+    struct Node *second;
+    struct Node *third;
+    struct Node *fourth;
+
+    head = (struct Node *)malloc(sizeof(struct Node));
+    second = (struct Node *)malloc(sizeof(struct Node));
+    third = (struct Node *)malloc(sizeof(struct Node));
+    fourth = (struct Node *)malloc(sizeof(struct Node));
+	temp =(struct Node *)malloc(sizeof(struct Node));
+	temp = head;
+    
+	printf("Enter element: \n");
+	scanf("%d", &head->data);
+    head->next = second;
+
+    printf("Enter element: \n");
+    scanf("%d",&second->data);
+    second->next = third;
+
+    printf("Enter element: \n");
+    scanf("%d", &third->data);
+    third->next = fourth;
+
+    printf("Enter element: \n");
+    scanf("%d", &fourth->data);
+    fourth->next = NULL;
+
+    printf("Linked list before insertion\n");
+    linkedListTraversal(head);
+
+    insertAtEnd(head, 30);
+    printf("\nLinked list after insertion\n");
+    linkedListTraversal(head);
+
+    return 0;
 }

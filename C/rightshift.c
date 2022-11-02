@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-void  main()
+int  main(void)
 {
   int i,n,a[100],temp;
 
