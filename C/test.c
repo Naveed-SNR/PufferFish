@@ -1,52 +1,47 @@
-#include <stdio.h>
-#include <stdlib.h>
-typedef struct stackll
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct tree
 {
-    int n;
-    struct stackll* next;
+    int data, i = 0;
+    bt* left;
+    bt* right;
+}bst;
 
-}stack;
-
-int top = 0;
-int capacity = 3;
+void print(bt*);
 
 int main(void)
 {
-    
-    stack* ptr = (stack*)malloc(sizeof(stack));
-    stack* head = NULL;
-    while(1)
+    bt* root = (bt*)malloc(sizeof(bt));
+}
+
+void print(bt* root)
+{
+    bt* trv = root;
+    bt* prv = root;
+
+    if(trv->i != 0)
     {
-        if(head == NULL)
+        prv = trv;
+        printf("%d\n", trv->data);
+        if(trv->right != NULL)
         {
-            printf("Enter element to push: ");
-            scanf("%d", &ptr->n);
-            ptr->next = NULL;
-            head = ptr;
-            break;
+            trv = prv;
         }
-        else
-        {
-            printf("Enter element to push: ");
-            scanf("%d", &ptr->n);
-            printf("Element pushed!\n\n");
-            ptr->next = head;
-            head = ptr;
-        }
+        trv = trv->right;
     }
 
-   /* while (1)
+    while (1)
     {
-        if(top <= 0)
+        prv = trv;
+        printf("%d\n", trv->data);
+        trv->i++;
+
+        if(trv->left != NULL)
         {
-            printf("\nStack is empty!\n\n");
+            trv = prv;
             break;
         }
-        else
-        {
-            printf("%d\n", stack[top]);
-            top--;
-        }
-    }*/
-    return 0;
+        trv = trv->left;
+    }
 }

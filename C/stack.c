@@ -5,11 +5,12 @@ int capacity = 3;
 
 int main(void)
 {
+    //both
     int stack[capacity];
 
     while(1)
     {
-        if(top == capacity)
+        if(top > capacity)
             {
                 printf("\nStack is full!\n\n");
                 break;
@@ -23,6 +24,7 @@ int main(void)
         }
     }
 
+    //stack
     while (1)
     {
         if(top == 0)
@@ -36,5 +38,22 @@ int main(void)
             printf("%d\n", stack[top]);
         }
     }
+
+    //queue
+    top = 0;
+    while(1)
+    {
+        if(top > capacity)
+            {
+                printf("\nQueue is empty!\n\n");
+                break;
+            }
+        else
+        {
+            printf("%d\n", stack[top]);
+            top++;
+        }
+    }
+    
     return 0;
 }
