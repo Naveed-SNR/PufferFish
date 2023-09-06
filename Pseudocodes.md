@@ -61,8 +61,24 @@ InsertionSort(arr)
             j--
         arr[j + 1] = key
 ```
+4. **Bubble Sort**
+```plainttext
+procedure BubbleSort(A: list of sortable items)
+    n = length(A)
+    repeat
+        swapped = false
+        for i = 1 to n-1 do
+            if A[i] > A[i+1] then
+                swap A[i] and A[i+1]
+                swapped = true
+            end if
+        end for
+        n = n - 1
+    until not swapped
+end procedure
+```
 
-4. **Binary Search:**
+5. **Binary Search:**
 ```plaintext
 BinarySearch(arr, target)
     low = 0
@@ -78,7 +94,7 @@ BinarySearch(arr, target)
     return -1  // Not found
 ```
 
-5. **Knapsack Problem (Greedy Approach):**
+6. **Knapsack Problem (Greedy Approach):**
 ```plaintext
 GreedyKnapsack(items, capacity)
     Sort items by value-to-weight ratio in decreasing order
@@ -92,7 +108,7 @@ GreedyKnapsack(items, capacity)
     return knapsack, totalValue
 ```
 
-6. **Knapsack Problem (Branch and Bound):**
+7. **Knapsack Problem (Branch and Bound):**
 ```plaintext
 BranchAndBoundKnapsack(items, capacity)
     Initialize a priority queue Q
@@ -118,7 +134,7 @@ createNodeWithItem(parentNode, item)
 createNodeWithoutItem(parentNode, item)
 ```
 
-7. **Knapsack Problem (Backtracking):**
+8. **Knapsack Problem (Backtracking):**
 ```plaintext
 BacktrackingKnapsack(items, capacity, currentIndex)
     if currentIndex < 0 or capacity <= 0
@@ -131,7 +147,7 @@ BacktrackingKnapsack(items, capacity, currentIndex)
         return max(includeItem, excludeItem)
 ```
 
-8. **Traveling Salesman Problem (Greedy Approach):**
+9. **Traveling Salesman Problem (Greedy Approach):**
 ```plaintext
 GreedyTSP(graph)
     Start from any city as the current city
@@ -146,7 +162,7 @@ GreedyTSP(graph)
     Return the tour and its total cost
 ```
 
-9. **Traveling Salesman Problem (Dynamic Programming):**
+10. **Traveling Salesman Problem (Dynamic Programming):**
 ```plaintext
 DynamicProgrammingTSP(graph)
     n = number of cities
@@ -162,7 +178,7 @@ DynamicProgrammingTSP(graph)
     Return the tour and its total cost
 ```
 
-10. **Longest Common Subsequence (Dynamic Programming):**
+11. **Longest Common Subsequence (Dynamic Programming):**
 ```plaintext
 LongestCommonSubsequence(X, Y)
     m = length(X)
@@ -183,7 +199,7 @@ LongestCommonSubsequence(X, Y)
     Return the result string
 ```
 
-11. **N-Queen Problem:**
+12. **N-Queen Problem:**
 ```plaintext
 NQueen(n)
     Initialize an empty n x n chessboard
@@ -208,7 +224,7 @@ isSafe(row, col)
     return true if safe, false otherwise
 ```
 
-12. **Matrix Multiplication (Dynamic Programming):**
+13. **Matrix Multiplication (Dynamic Programming):**
 ```plaintext
 MatrixMultiplication(A, B)
     n1, m1 = dimensions of matrix A
@@ -224,7 +240,7 @@ MatrixMultiplication(A, B)
     return matrix C
 ```
 
-13. **Dijkstra's Algorithm:**
+14. **Dijkstra's Algorithm:**
 ```plaintext
 Dijkstra(graph, start)
     Initialize distances to all vertices as infinity except for start (0)
@@ -245,7 +261,7 @@ Dijkstra(graph, start)
     return distances
 ```
 
-14. **Prim's Algorithm:**
+15. **Prim's Algorithm:**
 ```plaintext
 Prim(graph)
     Initialize an empty set MST (Minimum Spanning Tree)
@@ -262,7 +278,7 @@ Prim(graph)
     return MST
 ```
 
-15. **Floyd-Warshall Algorithm:**
+16. **Floyd-Warshall Algorithm:**
 ```plaintext
 FloydWarshall(graph)
     n = number of vertices in graph
