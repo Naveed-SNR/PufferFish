@@ -1,2 +1,2 @@
 # PufferFish
-Code
+C and C++ codes for newbies out there!
